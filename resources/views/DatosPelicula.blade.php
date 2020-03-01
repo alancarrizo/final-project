@@ -1,23 +1,28 @@
-@extends('layouts.contenido')
-@section('yield')
+@extends('layouts.contenidoA')
+@section('titulo')
+  datos de peliculas
+@endsection
+@section('secciones')
 <div class="">
-  <form class="" action="/Pelicula" method="post">
+  <table class="table table-striped" >
+    <thead>
 
-    @csrf
-
-    <label for="nombre"></label>
-    <input type="text" name="nombre" value="{{old("nombre")}}">
-
-    <label for="duracion"></label>
-    <input type="text" name="duracion" value="{{old("duracion")}}">
-
-    <label for="genero"></label>
-    <input type="text" name="genero" value="{{old("genero")}}">
-
-    @foreach ($peliculas as $pelicula)
-      <option value="{{$pelicula->id}}">{{$pelicula->nombre, duracion, genero}}</option>
-    @endforeach
-
-  </form>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th>DETALLE</th>
+      <th>EDITAR</th>
+    </thead>
+    <tbody>
+      @foreach ($peliculas as $pelicula)
+        <tr>
+        <td>{{$pelicula->id}}</td>
+        <td>{{$pelicula->title}}</td>
+        <td> <a href="/pelicula/{{$pelicula->id}}/detalle" class="btn btn-info" >ver detalle</a>  </td>
+        <td> <a href="/editarpelicula/{{$pelicula->id}}/editar">Editar Pelicula</a> </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+  {{$peliculas->links()}}
 </div>
 @endsection

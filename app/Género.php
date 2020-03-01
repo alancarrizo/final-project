@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Género extends Model
 {
-    Protected $guarded = []
+
+    public $table = 'genres';
+    public $guarded = [];
+
+    
 }

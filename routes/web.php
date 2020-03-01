@@ -18,7 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/agregar', 'PeliculasController@index')->name('agregarpelicula');
-Route::post('/agregar', 'PeliculasController@paraguardar');
-Route::get('/agregar', 'ActoresController@index')->name('agregaractores');
-Route::post('/agregar', 'ActoresController@paraguardar');
+Route::get('/actores', 'ActorController@vista')->name('DatosActores');
+Route::get('/actor/{id}/detalle', 'ActorController@detalleActor')->name('DatosAdetalles');
+
+Route::get('/peliculas', 'PeliculaController@vista')->name('DatosPeliculas');
+Route::get('/pelicula/{id}/detalle', 'PeliculaController@detallePelicula')->name('DatosPdetalles');
+
+Route::get('/generos', 'GéneroController@vista')->name('DatosGénero');
+Route::get('/genero/{id}/detalle', 'GéneroController@detalleGénero')->name('DatosGdetalles');
+
+Route::get('/creActores', 'ActorController@form')->name('formularioActores');
+Route::post('/creActores', 'ActorController@guardar');
+
+Route::get('/editarpelicula/{id}/editar', 'PeliculaController@form')->name('FormEditPeli');
+Route::put('/editarPelicula', 'PeliculaController@editar');

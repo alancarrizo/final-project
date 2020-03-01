@@ -1,18 +1,26 @@
-@extends('layouts.contenido')
-@section('yield')
+@extends('layouts.contenidoA')
+@section('titulo')
+  datos de generos
+@endsection
+@section('secciones')
 <div class="">
-  <form class="" action="/Géneros" method="post">
+  <table class="table table-striped" >
+    <thead>
 
-    @csrf
-
-    <label for="nombre"></label>
-    <input type="text" name="nombre" value="{{old("nombre")}}">
-
-
-    @foreach ($generos as $genero)
-      <option value="{{$genero->id}}">{{$genero->nombre}}</option>
-    @endforeach
-
-  </form>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th>DETALLE</th>
+    </thead>
+    <tbody>
+      <tr>
+      @foreach ($generos as $genero)
+        <td>{{$genero->id}}</td>
+        <td>{{$genero->name}}</td>
+        <a href="/genero/{{$genero->id}}/detalle">Detalle</a>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+  {{$generos->links()}}
 </div>
 @endsection

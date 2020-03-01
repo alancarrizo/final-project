@@ -1,0 +1,29 @@
+*{
+margin: 0 auto;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+.navegacion{
+  width: 1000px;
+  margin: 30px auto;
+  background: #6cb2eb;
+}
+
+.navegaion ul{
+  list-style: none;
+}
+
+.menu > li{
+  position: relative;
+  display: inline-block;
+}
+
+.menu > li > a{
+  display: block;
+  padding: 15px 20px;
+  color: #353535;
+  font-family: "Open sans";
+  text-decoration: none;
+}

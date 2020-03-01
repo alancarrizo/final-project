@@ -1,25 +1,26 @@
-@extends('layouts.contenido')
-@section('yield')
+@extends('layouts.contenidoA')
+@section('titulo')
+datos de actores
+@endsection
+@section('secciones')
 <div class="">
-  <form class="" action="/Actores" method="post">
+<table class="table table-striped" >
+  <thead>
 
-    @csrf
-
-    <label for="nombre"></label>
-    <input type="text" name="nombre" value="{{old("nombre")}}">
-
-    <label for="edad"></label>
-    <input type="text" name="edad" value="{{old("edad")}}">
-
-    <label for="apellido"></label>
-    <input type="text" name="apellido" value="{{old("apellido")}}">
-
+    <th>ID</th>
+    <th>NOMBRE</th>
+    <th>DETALLE</th>
+  </thead>
+  <tbody>
     @foreach ($actores as $actor)
-      <option value="{{$actor->id}}">{{$actor->nombre, edad, apellido}}</option>
+      <tr>
+      <td>{{$actor->id}}</td>
+      <td>{{$actor->first_name}}</td>
+      <td> <a href="/actor/{{$actor->id}}/detalle" class="btn btn-info" >ver detalle</a>  </td>
+    </tr>
     @endforeach
-
-    <input type="submit" name="enviar" value="enviar">
-
-  </form>
+  </tbody>
+</table>
+{{$actores->links()}}
 </div>
 @endsection
